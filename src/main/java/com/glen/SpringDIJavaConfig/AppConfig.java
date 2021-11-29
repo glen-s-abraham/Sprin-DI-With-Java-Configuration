@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
-	@Bean
+	@Bean(initMethod = "createPhone", destroyMethod = "destroyPhone")
 	public Phone getPhone() {
 		return new Phone();
 	}
@@ -14,5 +14,10 @@ public class AppConfig {
 	@Bean
 	public MobileProcessor getMobileProcessor() {
 		return new SnapDragon();
+	}
+	
+	@Bean 
+	public EventListenerClass getEventListenerClass() {
+		return new EventListenerClass();
 	}
 }
